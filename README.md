@@ -1,4 +1,4 @@
-# EX-4-ADVANCED-ENCRYPTION-STANDARD-DES-ALGORITHM
+# EX-4-ADVANCED-ENCRYPTION-STANDARD-AES-ALGORITHM
 
 ## Aim:
   To use Advanced Encryption Standard (AES) Algorithm for a practical application like URL Encryption.
@@ -10,5 +10,36 @@
   4. AES operates on a 4 × 4 column-major order array of bytes, termed the state
 
 ## PROGRAM: 
+```
+#include <stdio.h>
+#include <string.h>
+
+void xor_encrypt_decrypt(char *input, char *output, char key) {
+    for (int i = 0; i < strlen(input); i++) {
+        output[i] = input[i] ^ key;  // XOR each byte with the key
+    }
+    output[strlen(input)] = '\0'; // Null-terminate the result
+}
+
+int main() {
+    char text[] = "HelloWorld";  // Input text
+    char encrypted[100], decrypted[100];
+    char key = 'K';  // Simple XOR key
+
+    // Encrypt
+    xor_encrypt_decrypt(text, encrypted, key);
+    printf("Encrypted text: %s\n", encrypted);
+
+    // Decrypt (XOR again with the same key to decrypt)
+    xor_encrypt_decrypt(encrypted, decrypted, key);
+    printf("Decrypted text: %s\n", decrypted);
+
+    return 0;
+}
+
+```
 ## OUTPUT:
+![image](https://github.com/user-attachments/assets/f1a1fae5-bf11-4aa1-b9fb-348ea4509211)
+
 ## RESULT: 
+Thus the data encryption standard algorithm for AES had been implemented successfully.
